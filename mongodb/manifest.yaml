@@ -2,10 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongodb
-  namespace: roboshop
+  namespace: roboshop1
   # these labels are replicaset labels
   labels:
-    project: roboshop
+    project: roboshop1
     tier: db
     component: mongodb
 spec:
@@ -13,14 +13,14 @@ spec:
   selector:
     # using these labels replica set selects the pod
     matchLabels:
-      project: roboshop
+      project: roboshop1
       tier: db
       component: mongodb
   # This is pod definition, pod is subset of replicaset
   template:
     metadata:
       labels:
-        project: roboshop
+        project: roboshop1
         tier: db
         component: mongodb
     spec:
@@ -32,15 +32,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mongodb
-  namespace: roboshop
+  namespace: roboshop1
   labels:
-    project: roboshop
+    project: roboshop1
     tier: db
     component: mongodb
 spec:
   selector:
     # labels are used as selectors
-    project: roboshop
+    project: roboshop1
     tier: db
     component: mongodb
   ports:
